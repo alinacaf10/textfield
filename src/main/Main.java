@@ -8,32 +8,26 @@ public class Main {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        JTextField t1, t2, t3;
-        JLabel l1, l2, l3;
+        JTextArea t1;
+        JLabel l1, l2;
         JButton btn;
-        l1 = new JLabel("First num");
-        l1.setBounds(50, 10, 100, 30);
-        t1 = new JTextField();
-        t1.setBounds(50, 40, 200, 30);
-        l2 = new JLabel("Second num");
-        l2.setBounds(50, 70, 100, 30);
-        t2 = new JTextField();
-        t2.setBounds(50, 100, 200, 30);
-        l3 = new JLabel("Total");
-        l3.setBounds(50, 130, 100, 30);
-        t3 = new JTextField();
-        t3.setBounds(50, 160, 200, 30);
-        t3.setEditable(false);
-        btn=new JButton("Total");
-        btn.setBounds(50,200,200,30);
+        l1 = new JLabel("");
+        l1.setBounds(20, 40, 100, 30);
+        t1 = new JTextArea();
+        t1.setBounds(20, 100, 200, 60);
+        l2 = new JLabel("");
+        l2.setBounds(100, 40, 100, 30);
+        btn=new JButton("Submit");
+        btn.setBounds(20,200,200,30);
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int a=Integer.parseInt(t1.getText());
-                int b=Integer.parseInt(t2.getText());
-                int c=a+b;
-                String total=String.valueOf(c);
-                t3.setText(total);
+                String text=t1.getText();
+                String words[]=text.split("\\s");
+
+                l1.setText("Soz sayi: "+words.length);
+                l2.setText("Herf sayi: "+(text.length()-words.length+1));
+
             }
         });
         frame.setSize(400, 400);
@@ -42,9 +36,7 @@ public class Main {
         frame.add(t1);
         frame.add(l1);
         frame.add(l2);
-        frame.add(l3);
-        frame.add(t2);
-        frame.add(t3);
+
         frame.add(btn);
     }
 }
